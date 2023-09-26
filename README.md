@@ -4,4 +4,4 @@
 # `UPDATE SCRIPT`
 <pre><code>wget https://raw.githubusercontent.com/FdlyMots/not2/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
 
-<pre><code> wget https://raw.githubusercontent.com/Bringas-tunnel/v4/main/up.sh && chmod +x up.sh && ./up.sh
+<pre><code> wget https://raw.githubusercontent.com/FdlyMots/not2/main/up.sh && chmod +x up.sh && ./up.sh
