@@ -16,7 +16,7 @@
 not="https://raw.githubusercontent.com/FdlyMots/izin/main/ip"
 
 BURIQ () {
-    curl -sS ${not} )> /root/tmp
+    curl -sS ${not} > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -299,8 +299,8 @@ clear
                     echo -e "         ${y} [${u}•5${y}]${NC} TROJAN-WS  "     "       ${y}[${u}10${y}]${NC} MENU SETTINGS"
 		    echo -e "         ${r}────────────────────────────────────────────${NC}"
 		    echo -e "         ┌───────────────────────────────────────────┐"
-                    echo -e "         │${r}             Client : ${r}$Name${NC}"
-                    echo -e "         │${r}             Xpired : ${r}$exp2 days ${NC}"
+                    echo -e "         │${r}           Client : ${r}$Name${NC}"
+                    echo -e "         │${r}           Xpired : ${r}$exp ( $exp2 days )${NC}"
                     echo -e "         └───────────────────────────────────────────┘"
 		    echo -e "                          "
                     echo -e "          ${w}             Version : 4.0.9 ${NC}"
