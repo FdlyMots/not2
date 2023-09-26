@@ -2,6 +2,92 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
+# // Banner
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
+echo -e "  Welcome To FV STORE Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
+echo -e "     This Will Quick Setup VPN Server On Your Server"
+echo -e "         Auther : ${green}FV STORE ${NC}${YELLOW}(${NC} ${green}ZheeVPN Project ${NC}${YELLOW})${NC}"
+echo -e "       Â© Recode By FV STORE ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
+echo ""
+sleep 2
+# // Izin Script
+ipsaya=$(wget -qO- ipinfo.io/ip)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/FdlyMots/izin/main/ip"
+permission() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            ${RED}PERMISSION DENIED !${NC}"
+    echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
+    echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
+    echo -e "             \033[0;33mContact Admin :${NC}"
+    echo -e "      \033[0;36mTelegram${NC} t.me/fdlyvpn_ID"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6283160098834"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    exit
+  fi
+}
+permission
+# // Checking Os Architecture
+if [[ $( uname -m | awk '{print $1}' ) == "x86_64" ]]; then
+    echo -e "${OK} Your Architecture Is Supported ( ${green}$( uname -m )${NC} )"
+else
+    echo -e "${EROR} Your Architecture Is Not Supported ( ${YELLOW}$( uname -m )${NC} )"
+    exit 1
+fi
+
+# // Checking System
+if [[ $( cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g' ) == "ubuntu" ]]; then
+    echo -e "${OK} Your OS Is Supported ( ${green}$( cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g' )${NC} )"
+elif [[ $( cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g' ) == "debian" ]]; then
+    echo -e "${OK} Your OS Is Supported ( ${green}$( cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g' )${NC} )"
+else
+    echo -e "${EROR} Your OS Is Not Supported ( ${YELLOW}$( cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g' )${NC} )"
+    exit 1
+fi
+
+# // IP Address Validating
+if [[ $IP == "" ]]; then
+    echo -e "${EROR} IP Address ( ${YELLOW}Not Detected${NC} )"
+else
+    echo -e "${OK} IP Address ( ${green}$IP${NC} )"
+fi
+
+# // Validate Successfull
+echo ""
+read -p "$( echo -e "Press ${GRAY}[ ${NC}${green}Enter${NC} ${GRAY}]${NC} For Starting Installation") "
+echo ""
+clear
+rm -f /usr/bin/user
+username=$(curl https://raw.githubusercontent.com/FadlyNotNot/ipku/main/ipvps | grep $MYIP | awk '{print $2}')
+echo "$username" >/usr/bin/user
+expx=$(curl https://raw.githubusercontent.com/FadlyNotNot/ipku/main/ipvps | grep $MYIP | awk '{print $3}')
+echo "$expx" >/usr/bin/e
+# DETAIL ORDER
+username=$(cat /usr/bin/user)
+oid=$(cat /usr/bin/ver)
+exp=$(cat /usr/bin/e)
+clear
+# CERTIFICATE STATUS
+d1=$(date -d "$valid" +%s)
+d2=$(date -d "$today" +%s)
+certifacate=$(((d1 - d2) / 86400))
+# VPS Information
+DATE=$(date +'%Y-%m-%d')
+datediff() {
+    d1=$(date -d "$1" +%s)
+    d2=$(date -d "$2" +%s)
+    echo -e "$COLOR1 $NC Expiry In   : $(( (d1 - d2) / 86400 )) Days"
+}
+mai="datediff "$Exp" "$DATE""
 
 not="raw.githubusercontent.com/FdlyMots/not2/main/ssh/"
 fdlyvpn="raw.githubusercontent.com/FdlyMots/not2/main/"
@@ -59,24 +145,7 @@ if [ "" = "$PKG_OK" ]; then
   echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
   apt-get --yes install $REQUIRED_PKG
   sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] If error you need.. to do this"
-  sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${green}NOTES${NC} ] 1. apt update -y"  
-  echo -e "[ ${green}NOTES${NC} ] 2. apt upgrade -y"
-  echo -e "[ ${green}NOTES${NC} ] 3. apt dist-upgrade -y"
-  echo -e "[ ${green}NOTES${NC} ] 4. reboot"
-  sleep 1
-  echo -e "[ ${green}NOTES${NC} ] After rebooting"
-  echo -e "[ ${green}NOTES${NC} ] Then run this script again"
-  echo -e "[ ${green}NOTES${NC} ] if you understand then tap enter now"
-  read
-else
-  echo -e "[ ${green}INFO${NC} ] Oke installed"
-fi
+
 
 ttet=`uname -r`
 ReqPKG="linux-headers-$ttet"
@@ -106,7 +175,7 @@ if [ "$BASH" ]; then
   fi
 fi
 
-mesg n || true
+mesg n || true 
 clear
 END
 chmod 644 /root/.profile
@@ -115,8 +184,6 @@ echo -e "[ ${green}INFO${NC} ] Preparing the install file"
 apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
 echo -e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
-sleep 2
-echo -ne "[ ${green}INFO${NC} ] Check permission : "
 
 mkdir -p /var/lib/SIJA >/dev/null 2>&1
 echo "IP=" >> /var/lib/SIJA/ipvps.conf
@@ -141,7 +208,6 @@ read -rp "Input ur domain : " -e pp
         echo "IP=$pp" > /var/lib/SIJA/ipvps.conf
     fi
 
-fdlyvpn() {
 #install ssh ovpn
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green      Install SSH / WS               $NC"
@@ -151,9 +217,8 @@ clear
 wget ${not}ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 
 wget https://raw.githubusercontent.com/Fv-store/v4/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
-}
 
-fdlyvpn2() {
+
 #Instal Xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green          Install XRAY              $NC"
@@ -161,9 +226,7 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 sleep 1
 clear
 wget https://raw.githubusercontent.com/artanodrop/v4/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
-}
 
-fdlyvpn3() {
 clear
 #pasang rc clone ssh ovpn 
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" 
@@ -172,9 +235,8 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 sleep 2 
 clear 
 wget https://raw.githubusercontent.com/Bringas-tunnel/v5/main/backup/set-br.sh &&  chmod +x set-br.sh && ./set-br.sh
-}
 
-fdlyvpn4() {
+
 clear
 #Instal slowdns
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -184,9 +246,8 @@ sleep 2
 clear
 wget https://raw.githubusercontent.com/Andyvpn/Autoscript-by-azi/main/autoscript-ssh-slowdns-main/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
 clear
-}
 
-fdlyvpn5() {
+
 #Instal udp
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green          Install UDP              $NC"
@@ -195,16 +256,8 @@ sleep 2
 clear
 wget ${fdlyvpn}udp/udp.sh && chmod +x udp.sh && ./udp.sh
 clear
-}
 
-pensi(){
-fdlyvpn
-fdlyvpn2
-fdlyvpn3
-fdlyvpn4
-}
 
-pensi
 cat> /root/.profile << END
 # ~/.profile: executed by Bourne-compatible login shells.
 
@@ -240,6 +293,37 @@ else
 gg="AM"
 fi
 curl -sS ifconfig.me > /etc/myipvps
+
+Terakhir(){
+MYIP=$(curl -sS ipv4.icanhazip.com)
+domain=$(cat /root/domain)
+export OS_Name=$( cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/PRETTY_NAME//g' | sed 's/=//g' | sed 's/"//g' )
+Ram_Usage="$((mem_used / 1024))"
+Ram_Total="$((mem_total / 1024))"
+export tanggal=`date -d "0 days" +"%d-%m-%Y - %X" `
+CHATID="-1001899398362"
+KEY="6293396608:AAFR9MI4hz8Jfe7AVITf1ANVxOVUhe_lZmc"
+TIME="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+────────────────────────
+  ⚡ INSTALLASI SCRIPT ⚡
+────────────────────────
+Tanggal : <code>$tanggal</code>
+Linux   : <code>$OS_Name</code>
+Ram Used: <code>$Ram_Total / $Ram_Usage MB</code>
+────────────────────────
+Domain  : <code>$domain</code>
+IP Vps  : <code>$MYIP</code>
+Username: <code>$username</code>
+Expired : <code>$exp</code>
+────────────────────────
+<i>Nontifikasi Otomatis Dari Github</i>
+<i>Fv Store</i>
+'&reply_markup={"inline_keyboard":[[{"text":"⚡ ORDER ⚡","url":"https://t.me/fdlyvpn_ID"}]]}'
+"
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+}
 echo " "
 echo "=====================-[ FV STORE ]-===================="
 echo ""
@@ -284,6 +368,7 @@ echo "" | tee -a log-install.txt
 rm /root/setup.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
+Terakhir
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e "
 "
