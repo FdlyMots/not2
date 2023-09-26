@@ -5,6 +5,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 clear
 # Getting
 
+read -p " Menit : " pup
 sldomain=$(cat /root/nsdomain)
 cdndomain=$(cat /root/awscdndomain)
 slkey=$(cat /etc/slowdns/server.pub)
@@ -48,12 +49,15 @@ echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
 
 if [[ ! -z "${PID}" ]]; then
+clear
+echo userdel -f "$Login" | at now +$pup minutes &> /dev/null
+echo "deltrial ssh ${Login}" | at now +$pup minutes &> /dev/null
 echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "\E[40;1;37m        𝗔𝗖𝗖𝗢𝗨𝗡𝗧 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡           \E[0m" | tee -a /etc/log-create-user.log
 echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Username    : $Login" | tee -a /etc/log-create-user.log
 echo -e "Password    : $Pass" | tee -a /etc/log-create-user.log
-echo -e "Expired On  : $exp" | tee -a /etc/log-create-user.log
+echo -e "Expired On  : $pup" | tee -a /etc/log-create-user.log
 echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "\E[40;1;37m         𝗦𝗘𝗥𝗩𝗘𝗥 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡      \E[0m" | tee -a /etc/log-create-user.log
 echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
@@ -70,19 +74,6 @@ echo -e "SSH-UDP     : 1-65535" | tee -a /etc/log-create-user.log
 echo -e "\e[1;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "OpenVPN Config : http://$IP:81/" | tee -a /etc/log-create-user.log
 echo -e "\e[1;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Payload WSS SSL [husus port 443]" | tee -a /etc/log-create-user.log
-echo -e "
-GET-CFRAY wss://[host] [protocol]
-[crlf]Host: ${domen}
-[crlf]Upgrade: ws[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "================================="
-echo -e "Payload Ws [husus port 80]" | tee -a /etc/log-create-user.log
-echo -e "
-GET / HTTP/1.1[crlf]Host: $domen
-[crlf]Upgrade: ws[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 
 else
 
@@ -91,7 +82,7 @@ echo -e "\E[40;1;37m        𝗔𝗖𝗖𝗢𝗨𝗡𝗧             \E[0m" | te
 echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Username    : $Login" | tee -a /etc/log-create-user.log
 echo -e "Password    : $Pass" | tee -a /etc/log-create-user.log
-echo -e "Expired On  : $exp" | tee -a /etc/log-create-user.log
+echo -e "Expired On  : $pup" | tee -a /etc/log-create-user.log
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "\E[40;1;37m         𝗦𝗘𝗥𝗩𝗘𝗥              \E[0m" | tee -a /etc/log-create-user.log
 echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
@@ -112,19 +103,6 @@ echo -e "SETING-UDP  : $domen:1-65535@$Login:$Pass"
 echo -e "\e[1;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "OpenVPN Config : http://$IP:81/" | tee -a /etc/log-create-user.log
 echo -e "\e[1;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Payload WSS+SSL [husus port 443]" | tee -a /etc/log-create-user.log
-echo -e "
-GET-CFRAY wss://[host] [protocol]
-[crlf]Host: ${domen}
-[crlf]Upgrade: ws[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "==============================="
-echo -e "Payload WS [husus port 80]" | tee -a /etc/log-create-user.log
-echo -e "
-GET / HTTP/1.1[crlf]Host: $domen
-[crlf]Upgrade: ws[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\e[1;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 fi
 echo ""
 read -n 1 -s -r -p "Press enter to menu"
