@@ -50,8 +50,8 @@ PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
 
 if [[ ! -z "${PID}" ]]; then
 clear
-echo userdel -f "$Login" | at now +$pup minutes &> /dev/null
-echo "deltrial ssh ${Login}" | at now +$pup minutes &> /dev/null
+userdel -f "$Login" | at now +$pup minutes &> /dev/nul
+deltrial ssh ${Login}" | at now +$pup minutes &> /dev/null
 echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "\E[40;1;37m        𝗔𝗖𝗖𝗢𝗨𝗡𝗧 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡           \E[0m" | tee -a /etc/log-create-user.log
 echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
