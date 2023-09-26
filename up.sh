@@ -50,63 +50,64 @@ rm -rf restore
 rm -rf jam
 rm -rf up
 
+res1(){
 # download script
 cd /usr/bin
 # menu
-wget -O up "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/up.sh"
-wget -O menu "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/menu.sh"
+wget -O up "https://raw.githubusercontent.com/FdlyMots/not2/main/up.sh"
+wget -O menu "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/menu.sh"
 wget -O menu-trial "https://raw.githubusercontent.com/Fikripps/Ver3/main/menu/menu-trial.sh"
-wget -O menu-vmess "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/menu-vmess.sh"
-wget -O menu-vless "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu-vless.sh"
-wget -O running "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/running.sh"
+wget -O menu-vmess "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/menu-vmess.sh"
+wget -O menu-vless "https://raw.githubusercontent.com/FdlyMots/not2/main/menu-vless.sh"
+wget -O running "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/running.sh"
 wget -O clearcache "https://raw.githubusercontent.com/Fikripps/Ver3/main/menu/clearcache.sh"
-wget -O menu-trgo "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/menu-trgo.sh"
-wget -O menu-trojan "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/menu-trojan.sh"
+wget -O menu-trgo "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/menu-trgo.sh"
+wget -O menu-trojan "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/menu-trojan.sh"
 
 # menu ssh ovpn
-wget -O menu-sshh "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/menu-sshh.sh"
-wget -O usernew "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/trial.sh"
-wget -O renew "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/renew.sh"
-wget -O hapus "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/hapus.sh"
-wget -O cek "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/cek.sh"
-wget -O member "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/member.sh"
-wget -O delete "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/delete.sh"
-wget -O autokilll "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/autokilll.sh"
-wget -O ceklim "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/ceklim.sh"
-wget -O tendang "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/tendang.sh"
+wget -O menu-sshh "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/menu-sshh.sh"
+wget -O usernew "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/trial.sh"
+wget -O renew "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/renew.sh"
+wget -O hapus "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/hapus.sh"
+wget -O cek "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/cek.sh"
+wget -O member "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/member.sh"
+wget -O delete "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/delete.sh"
+wget -O autokilll "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/autokilll.sh"
+wget -O ceklim "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/ceklim.sh"
+wget -O tendang "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/tendang.sh"
 
 # menu system
-wget -O menu-set "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/menu-set.sh"
-wget -O menu-domain "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/menu-domain.sh"
-wget -O add-host "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/add-host.sh"
-wget -O port-change "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/port/port-change.sh"
-wget -O certv2ray "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/xray/certv2ray.sh"
-wget -O menu-webmin "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/menu-webmin.sh"
-wget -O speedtest "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/speedtest_cli.py"
+wget -O menu-set "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/menu-set.sh"
+wget -O menu-domain "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/menu-domain.sh"
+wget -O add-host "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/add-host.sh"
+wget -O port-change "https://raw.githubusercontent.com/FdlyMots/not2/main/port/port-change.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/FdlyMots/not2/main/xray/certv2ray.sh"
+wget -O menu-webmin "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/menu-webmin.sh"
+wget -O speedtest "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/speedtest_cli.py"
 wget -O about "https://raw.githubusercontent.com/Fikripps/Ver3/main/menu/about.sh"
-wget -O auto-reboot "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/auto-reboot.sh"
-wget -O restarts "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/restarts.sh"
-wget -O bw "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/bw.sh"
+wget -O auto-reboot "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/auto-reboot.sh"
+wget -O restarts "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/restarts.sh"
+wget -O bw "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/bw.sh"
 
 # change port
-wget -O port-ssl "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/port/port-ssl.sh"
-wget -O port-ovpn "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/port/port-ovpn.sh"
+wget -O port-ssl "https://raw.githubusercontent.com/FdlyMots/not2/main/port/port-ssl.sh"
+wget -O port-ovpn "https://raw.githubusercontent.com/FdlyMots/not2/main/port/port-ovpn.sh"
 
 
-wget -O xp "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/xp.sh"
-wget -O acs-set "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/acs-set.sh"
+wget -O xp "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/xp.sh"
+wget -O acs-set "https://raw.githubusercontent.com/FdlyMots/not2/main/acs-set.sh"
 
-wget -O sshws "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/ssh/sshws.sh"
-wget -O status "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/status.sh"
-wget https://raw.githubusercontent.com/Andyyuda/ver3/main/backup/set-br.sh &&  chmod +x set-br.sh && ./set-br.sh
-wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/menu/menu.sh" && chmod +x /usr/bin/menu
+wget -O sshws "https://raw.githubusercontent.com/FdlyMots/not2/main/ssh/sshws.sh"
+wget -O status "https://raw.githubusercontent.com/FdlyMots/not2/main/status.sh"
+wget https://raw.githubusercontent.com/Andyyuda/ver3/backup/set-br.sh &&  chmod +x set-br.sh && ./set-br.sh
+wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/FdlyMots/not2/main/menu/menu.sh" && chmod +x /usr/bin/menu
 wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/Andyyuda/ver3/main/backup/menu-backup.sh" && chmod +x /usr/bin/menu-backup
 wget -q -O /usr/bin/backup "https://raw.githubusercontent.com/Andyyuda/ver3/main/backup/backup.sh" && chmod +x /usr/bin/backup
 wget -q -O /usr/bin/restore "https://raw.githubusercontent.com/Andyyuda/ver3/main/backup/restore.sh" && chmod +x /usr/bin/restore
-wget -q -O /usr/bin/up "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/up.sh" && chmod +x /usr/bin/up
-wget -O jam "https://raw.githubusercontent.com/Bringas-tunnel/v4/main/jam.sh"
-wget https://raw.githubusercontent.com/Bringas-tunnel/v4/main/udp/udp.sh && bash udp.sh
+wget -q -O /usr/bin/up "https://raw.githubusercontent.com/FdlyMots/not2/main/up.sh" && chmod +x /usr/bin/up
+wget -O jam "https://raw.githubusercontent.com/FdlyMots/not2/main/jam.sh"
+wget https://raw.githubusercontent.com/FdlyMots/not2/main/udp/udp.sh && bash udp.sh
 wget https://raw.githubusercontent.com/Andyvpn/Autoscript-by-azi/main/autoscript-ssh-slowdns-main/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
 
 chmod +x menu
@@ -153,6 +154,45 @@ chmod +x menu-bckp
 chmod +x backup
 chmod +x restore
 chmod +x jam
-echo -e " [INFO] Update Successfully"
-sleep 2
-exit
+}
+
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+clear
+fun_bar() {
+    CMD[0]="$1"
+    CMD[1]="$2"
+    (
+        [[ -e $HOME/fim ]] && rm $HOME/fim
+        ${CMD[0]} -y >/dev/null 2>&1
+        ${CMD[1]} -y >/dev/null 2>&1
+        touch $HOME/fim
+    ) >/dev/null 2>&1 &
+    tput civis
+    echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+    while true; do
+        for ((i = 0; i < 18; i++)); do
+            echo -ne "\033[0;32m#"
+            sleep 0.1s
+        done
+        [[ -e $HOME/fim ]] && rm $HOME/fim && break
+        echo -e "\033[0;33m]"
+        sleep 1s
+        tput cuu1
+        tput dl1
+        echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+    done
+    echo -e "\033[0;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
+    tput cnorm
+}
+netfilter-persistent
+clear
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " \e[1;97;101m          UPDATE SCRIPT                 \e[0m"
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
+echo -e "  \033[1;91m update script service\033[1;37m"
+fun_bar 'res1'
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
+read -n 1 -s -r -p "Press [ Enter ] to back on "
+rm -rf up.sh ; menu
