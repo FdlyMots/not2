@@ -4,33 +4,25 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
 NC="\e[0m"
 RED="\033[0;31m" 
-
-        green_background="\033[42;37m"
-
-        red_background="\033[41;37m"
-
-        # color text 
-
-        yelow="\e[1;33m"
-
-        NC="\033[0m"
-
-        cyan="\e[1;36m"
-
-        white="\e[1;37m"
+green_background="\033[42;37m"
+red_background="\033[41;37m"
+yelow="\e[1;33m"
+NC="\033[0m" 
+cyan="\e[1;36m"
+white="\e[1;37m"
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 clear
-echo -e "   ${red_background}VMESS MENU${NC}"
+echo -e "${red_background}VMESS MENU${NC}"
 echo -e ""
-echo -e "        ${white}[•1]${NC} ${cyan}Create v2ray${NC}"
-echo -e "        ${white}[•2]${NC} ${cyan}Create trial${NC}"
-echo -e "        ${white}[•3]${NC} ${cyan}Xtendd V2ray${NC}"
-echo -e "        ${white}[•4]${NC} ${cyan}Delete V2ray${NC}"
-echo -e "        ${white}[•5]${NC} ${cyan}Cek User Login${NC}"
-echo -e "        ${yelow}[•0]${NC} ${yelow}Back To Menu${NC}"
+echo -e "${white}[•1]${NC} ${cyan}Create Vmess Account ${NC}"
+echo -e "${white}[•2]${NC} ${cyan}Trial Vmess Account ${NC}"
+echo -e "${white}[•3]${NC} ${cyan}Renew Vmess Account ${NC}"
+echo -e "${white}[•4]${NC} ${cyan}Delete Vmess Account ${NC}"
+echo -e "${white}[•5]${NC} ${cyan}Cek Vmess User Login ${NC}"
+echo -e "${yelow}[•0]${NC} ${yelow}Back To Menu${NC}"
 echo -e "${yelow}"
-read -p "  >>>   "  opt
+read -p " Select Options : "  opt
 echo -e ""
 case $opt in
 1) clear ; add-ws ; exit ;;
@@ -40,5 +32,5 @@ case $opt in
 5) clear ; cek-ws ; exit ;;
 0) clear ; menu ; exit ;;
 x) exit ;;
-*) echo "Salah pencet" ; menu-ssh ;;
+*) menu-vmess ;;
 esac
