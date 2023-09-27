@@ -12,66 +12,69 @@
  COLOR1='\033[0;35m' 
  COLOR2='\033[0;39m' 
  clear
-
-not="https://raw.githubusercontent.com/FdlyMots/izin/main/ip"
-
-BURIQ () {
-    curl -sS ${not} > /root/tmp
-    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
-    for user in "${data[@]}"
-    do
-    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
-    d1=(`date -d "$exp" +%s`)
-    d2=(`date -d "$biji" +%s`)
-    exp2=$(( (d1 - d2) / 86400 ))
-    if [[ "$exp2" -le "0" ]]; then
-    echo $user > /etc/.$user.ini
-    else
-    rm -f /etc/.$user.ini > /dev/null 2>&1
-    fi
-    done
-    rm -f /root/tmp
+ipsaya=$(wget -qO- ipinfo.io/ip)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/FdlyMots/izin/main/ip"
+checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            ${RED}PERMISSION DENIED !${NC}"
+    echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
+    echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
+    echo -e "             \033[0;33mContact Admin :${NC}"
+    echo -e "      \033[0;36mTelegram${NC} t.me/fdlyvpn_ID"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6283160098834"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    exit
+  fi
 }
+checking_sc
+clear
+# USERNAME
+rm -f /usr/bin/user
+username=$(curl https://raw.githubusercontent.com/FdlyMots/izin/main/ip | grep $MYIP | awk '{print $2}')
+echo "$username" >/usr/bin/user
+# validity
+rm -f /usr/bin/e
+valid=$(curl https://raw.githubusercontent.com/FdlyMots/izin/main/ip | grep $MYIP | awk '{print $3}')
+echo "$valid" >/usr/bin/e
+# DETAIL ORDER
+username=$(cat /usr/bin/user)
+oid=$(cat /usr/bin/ver)
+exp=$(cat /usr/bin/e)
+clear
+# CERTIFICATE STATUS
+d1=$(date -d "$valid" +%s)
+d2=$(date -d "$today" +%s)
+certifacate=$(((d1 - d2) / 86400))
+# VPS Information
+DATE=$(date +'%Y-%m-%d')
+datediff() {
+    d1=$(date -d "$1" +%s)
+    d2=$(date -d "$2" +%s)
+    echo -e "$COLOR1 $NC Expiry In   : $(( (d1 - d2) / 86400 )) Days"
+}
+mai="datediff "$Exp" "$DATE""
 
-MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS ${not} | grep $MYIP | awk '{print $2}')
-echo $Name > /usr/local/etc/.$Name.ini
-CekOne=$(cat /usr/local/etc/.$Name.ini)
-
-Bloman () {
-if [ -f "/etc/.$Name.ini" ]; then
-CekTwo=$(cat /etc/.$Name.ini)
-    if [ "$CekOne" = "$CekTwo" ]; then
-        res="Expired"
-    fi
+# Status ExpiRED Active
+Info="(${green}Active${NC})"
+Error="(${RED}Expired${NC})"
+today=`date -d "0 days" +"%Y-%m-%d"`
+Exp1=$(curl https://raw.githubusercontent.com/FdlyMots/izin/main/ip | grep $MYIP | awk '{print $3}')
+if [[ $today < $Exp1 ]]; then
+sts="${Info}"
 else
-res="Permission Accepted..."
+sts="${Error}"
 fi
-}
-
-PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS ${not} | awk '{print $4}' | grep $MYIP)
-    if [ "$MYIP" = "$IZIN" ]; then
-    Bloman
-    else
-    res="Permission Denied!"
-    fi
-    BURIQ
-}
-red='\e[1;31m'
-green='\e[1;32m'
-NC='\e[0m'
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-PERMISSION
-
-if [ "$res" = "Expired" ]; then
-Exp="\e[36mExpired\033[0m"
-else
-Exp=$(curl -sS ${not} | grep $MYIP | awk '{print $3}')
-fi
-
+echo -e "\e[32mloading...\e[0m"
+clear
 # // Exporting Language to UTF-8
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
@@ -273,41 +276,39 @@ GB="\033[42;37m" # HIJAU BACKGROUND
 RB="\033[41;37m" # MERAH BACKGROUND
 MYIP=$(curl -sS ipv4.icanhazip.com)
 clear   
-     echo -e " ${w}${NC}"
-                    echo -e "         ┌───────────────────────────────────────────┐"
-		    echo -e "         |${GB}              FV STORE TUNEL              ${NC}" "|"
-		    echo -e "         └───────────────────────────────────────────┘"
-                    echo -e "         │ ${c} IP VPS  : $IPVPS ${NC}"
-                    echo -e "         │ ${c} CPU     : $cpu_usage ${NC}"  
-		    echo -e "         │ ${c} DOMAIN  : $domain ${NC}"
-                    echo -e "         │ ${c} RAM     : $tram Mb ${NC}"
-                    echo -e "         │ ${c} DATE    : $DATE${NC}"
-		    echo -e "         │ ${c} ISP     : $ISP ${NC}"
-                    echo -e "         └───────────────────────────────────────────┘"  
-		    echo -e "         ┌───────────────────────────────────────────┐"
-                    echo -e "          [ SSH : $status_ws_epro ] [ X-RAY : $status_ss ] [ NGINX : $status_nginx ]"
-		    echo -e "         └───────────────────────────────────────────┘"
-                    echo -e "         ┌───────────────────────────────────────────┐"
-                    echo -e "         ssh : $ssh1 / vmess : $vma / vless : $vla / trojan : $tra"
-		    echo -e "         └───────────────────────────────────────────┘"
-		    echo -e "                          ${ug}${g}DAFTAR MENU${NC}"
-                    echo -e "         ${r}────────────────────────────────────────────${NC}"
-                    echo -e "         ${y} [${u}•1${y}]${NC} SSH & UDP  "     "       ${y}[${u}•6${y}]${NC} CHECK RUNNING"
-                    echo -e "         ${y} [${u}•2${y}]${NC} VMESS Xray "     "       ${y}[${u}•7${y}]${NC} RESTR SERVICE"  
-                    echo -e "         ${y} [${u}•3${y}]${NC} VLESS Xray "     "       ${y}[${u}•8${y}]${NC} BACKUP MENU  " 
-                    echo -e "         ${y} [${u}•4${y}]${NC} TROJAN-GO  "     "       ${y}[${u}•9${y}]${NC} CHANGE BANNER"
-                    echo -e "         ${y} [${u}•5${y}]${NC} TROJAN-WS  "     "       ${y}[${u}10${y}]${NC} MENU SETTINGS"
-		    echo -e "         ${r}────────────────────────────────────────────${NC}"
-		    echo -e "         ┌───────────────────────────────────────────┐"
-                    echo -e "         │${r}           Client : ${r}$Name${NC}"
-                    echo -e "         │${r}           Xpired : ${r}$exp ( $exp2 days )${NC}"
-                    echo -e "         └───────────────────────────────────────────┘"
-		    echo -e "                          "
-                    echo -e "          ${w}             Version : 4.0.9 ${NC}"
-		    echo -e "                       ${y}___${r}___${u}___${w}___${c}___${g}${NC}"
-echo -e ""
+echo -e "         ┌─────────────────────────────────────────
+echo -e "         |${GB}              FV STORE TUNNEL             ${NC}|"
+echo -e "         └───────────────────────────────────────────┘"
+echo -e "         │ ${c} IP VPS  : $IPVPS ${NC}"
+echo -e "         │ ${c} CPU     : $cpu_usage ${NC}" 
+echo -e "         │ ${c} DOMAIN  : $domain ${NC}"
+echo -e "         │ ${c} RAM     : $tram / $uram Mb ${NC}"
+echo -e "         │ ${c} DATE    : $DATE ${NC}"
+echo -e "         │ ${c} ISP     : $ISP ${NC}"
+echo -e "         └───────────────────────────────────────────┘" 
+echo -e "         ┌───────────────────────────────────────────┐"
+echo -e "          [ SSH : $status_ws_epro ] [ X-RAY : $status_ss ] [ NGINX : $status_nginx ]"
+echo -e "         └───────────────────────────────────────────┘"
+echo -e "         ┌───────────────────────────────────────────┐"
+echo -e "         ssh : $ssh1 │ vmess : $vma │ vless : $vla │ trojan : $tra ${NC}"
+echo -e "         └───────────────────────────────────────────┘"
+echo -e "                          ${ug}${g}DAFTAR MENU${NC}"
+echo -e "         ${r}────────────────────────────────────────────${NC}"
+echo -e "         ${y} [${u}•1${y}]${NC} SSHWS MENU ${NC}       ${y}[${u}•6${y}]${NC} CHECK RUNNING"
+echo -e "         ${y} [${u}•2${y}]${NC} VMESS MENU ${NC}       ${y}[${u}•7${y}]${NC} RESTR SERVICE"  
+echo -e "         ${y} [${u}•3${y}]${NC} VLESS MENH ${NC}       ${y}[${u}•8${y}]${NC} BACKUP MENU  " 
+echo -e "         ${y} [${u}•4${y}]${NC} TROJAN-GO  ${NC}       ${y}[${u}•9${y}]${NC} CHANGE BANNER"
+echo -e "         ${y} [${u}•5${y}]${NC} TROJAN-WS  ${NC}       ${y}[${u}•0${y}]${NC} MENU SETTINGS"
+echo -e "         ${r}────────────────────────────────────────────${NC}"
+echo -e "         ┌───────────────────────────────────────────┐"
+echo -e "         │${r}           Client : ${r}$username${NC}"
+echo -e "         │${r}           Xpired : ${r}$exp ${NC}"
+echo -e "         └───────────────────────────────────────────┘"
+echo -e "                          "
+echo -e "          ${w}             Version : 1.0.1 ${NC}"
+echo -e "                       ${y}______${r}______${u}______${w}______${c}______${g}${NC}"
 echo -e   "${g}"
-read -p " select menu [ 1 / 10 ] >>   "  opt
+read -p " select menu ( 1 - 10 ) : " opt
 echo -e   ""
 case $opt in
 1) clear ; menu-sshh ;;
@@ -319,6 +320,7 @@ case $opt in
 7) clear ; restarts ;;
 8) clear ; menu-backup ;;
 9) clear ; menu-domain;;
-10) clear ; menu-set ;;
+0) clear ; menu-set ;;
 x) exit ;;
+*) menu ;;
 esac
